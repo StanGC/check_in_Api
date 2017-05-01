@@ -11,4 +11,5 @@ class User < ApplicationRecord
   end
 
   has_many :device
+  mount_uploader :avatar, AvatarUploader
 end

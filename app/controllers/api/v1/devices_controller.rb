@@ -7,6 +7,7 @@ class Api::V1::DevicesController < ApiController
                             :token => params[:authentication_token],
                             :operating_system => params[:operating_system],
                             :version => params[:version],
+                            :avatar => params[:avatar],
                             :name => params[:name] )
 
       if @device.save
@@ -15,6 +16,7 @@ class Api::V1::DevicesController < ApiController
                           :token => @device.token,
                           :operating_system => @device.operating_system,
                           :version => @device.version,
+                          :avatar => @device.avatar,
                           :name => @device.name}
       else
         render :json => { :message => "新增失敗", :errors => @device.errors }, :status => 400
