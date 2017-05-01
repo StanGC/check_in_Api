@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => { :format => :json } do
     namespace :v1 do
-      post "/device" => "device#create", :as => :create_device
+      post "/devices" => "devices#create", :as => :create_devices
 
       get "/checkininfo/:token" => "checkininfo#show", :as => :checkininfo
       post "/checkininfo" => "checkininfo#create", :as => :create_Checkininfo
