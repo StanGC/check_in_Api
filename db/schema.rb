@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501082056) do
+ActiveRecord::Schema.define(version: 20170501091742) do
+
+  create_table "checkininfos", force: :cascade do |t|
+    t.integer  "device_id"
+    t.string   "token"
+    t.string   "lng"
+    t.string   "lat"
+    t.string   "comment"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_checkininfos_on_device_id"
+    t.index ["token"], name: "index_checkininfos_on_token"
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "operating_system"
+    t.string   "version"
+    t.string   "name"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["token"], name: "index_devices_on_token"
+    t.index ["user_id"], name: "index_devices_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
