@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502132145) do
+ActiveRecord::Schema.define(version: 20170502135336) do
 
   create_table "checkininfos", force: :cascade do |t|
     t.integer  "device_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170502132145) do
     t.string   "name"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "avatar"
     t.index ["token"], name: "index_devices_on_token"
     t.index ["user_id"], name: "index_devices_on_user_id"
   end

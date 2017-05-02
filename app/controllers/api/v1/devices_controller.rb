@@ -7,8 +7,8 @@ class Api::V1::DevicesController < ApiController
                             :token => params[:authentication_token],
                             :operating_system => params[:operating_system],
                             :version => params[:version],
-                            :avatar => params[:avatar],
-                            :name => params[:name] )
+                            :avatar => @user.avatar,
+                            :name => @user.name )
 
       if @device.save
         render :json => { :message => "新增成功", :errors => @device.errors , :status => 200,
