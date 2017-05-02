@@ -1,4 +1,5 @@
 class Api::V1::DevicesController < ApiController
+  before_action :authenticate_user!
   def create
     @user = User.find_by(authentication_token: params["authentication_token"] )
     @user ? @user : (render :json => { :message => "驗證失敗" })

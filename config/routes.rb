@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "/devices" => "devices#create", :as => :create_devices
 
-      get "/checkininfo/:token" => "checkininfo#show", :as => :checkininfo
-      post "/checkininfo" => "checkininfo#create", :as => :create_checkininfo
-      patch "/checkininfo/:token" => "checkininfo#update", :as => :update_checkininfo
-      delete "/checkininfo/:token" => "checkininfo#destroy", :as => :cancel_checkininfo
+      get "/checkininfos/:token" => "checkininfos#show", :as => :checkininfos
+      post "/checkininfos" => "checkininfos#create", :as => :create_checkininfos
+      patch "/checkininfos/:token" => "checkininfos#update", :as => :update_checkininfos
+      delete "/checkininfos/:token" => "checkininfos#destroy", :as => :cancel_checkininfos
     end
   end
 end
