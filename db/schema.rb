@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502135336) do
+ActiveRecord::Schema.define(version: 20170502141100) do
 
   create_table "checkininfos", force: :cascade do |t|
     t.integer  "device_id"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20170502135336) do
     t.string   "lat"
     t.string   "comment"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "location_photo"
     t.index ["device_id"], name: "index_checkininfos_on_device_id"
     t.index ["token"], name: "index_checkininfos_on_token"
   end

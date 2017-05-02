@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post "/devices" => "devices#create", :as => :create_devices
 
       get "/checkininfo/:token" => "checkininfo#show", :as => :checkininfo
-      post "/checkininfo" => "checkininfo#create", :as => :create_Checkininfo
+      post "/checkininfo" => "checkininfo#create", :as => :create_checkininfo
       patch "/checkininfo/:token" => "checkininfo#update", :as => :update_checkininfo
       delete "/checkininfo/:token" => "checkininfo#destroy", :as => :cancel_checkininfo
     end
