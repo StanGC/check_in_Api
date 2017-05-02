@@ -24,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'pry'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "simple_form"
 
 group :development, :test do
   gem 'byebug', platform: :mri
