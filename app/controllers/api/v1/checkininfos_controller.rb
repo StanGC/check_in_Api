@@ -1,7 +1,7 @@
 class Api::V1::CheckininfosController < ApiController
 
   def show
-    @checkininfo = Checkininfo.find_by(token: params["token"] )
+    @checkininfo = Checkininfo.find_by(token: params["token"])
 
     render :json => {
       :device_id => @checkininfo.device_id,
@@ -41,5 +41,20 @@ class Api::V1::CheckininfosController < ApiController
         render :json => { :message => "新增失敗", :errors => @checkininfo.errors }, :status => 400
       end
     end
+  end
+
+  def update
+    @checkininfo = Checkininfo.find_by(token: params["token"])
+
+    if @checkininfo.update(checkininfo_params)
+      render :json => { :message => "更新成功" }
+    else
+      render :json => { :message => "更新失敗", :errors => @checkininfo.errors }, :status => 400
+    end
+  end
+
+  protected
+  def checkininfo_params
+    params.permit(:lng, :lat, :comment, :location, :location_photo)
   end
 end
