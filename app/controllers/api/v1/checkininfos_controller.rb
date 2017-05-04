@@ -1,5 +1,19 @@
 class Api::V1::CheckininfosController < ApiController
 
+  def show
+    @checkininfo = Checkininfo.find_by(token: params["token"] )
+
+    render :json => {
+      :device_id => @checkininfo.device_id,
+      :token => @checkininfo.token,
+      :lng => @checkininfo.lng,
+      :lat => @checkininfo.lat,
+      :comment => @checkininfo.comment,
+      :location => @checkininfo.location,
+      :location_photo => @checkininfo.location_photo
+    }
+  end
+
   def create
     @device = Device.find_by(token: params["authentication_token"] )
 
