@@ -53,6 +53,17 @@ class Api::V1::CheckininfosController < ApiController
     end
   end
 
+  def destroy
+    @checkininfo = Checkininfo.find_by(token: params["token"])
+    @checkininfo.delete
+
+    if @checkininfo.delete
+      render :json => { :message => "刪除成功" }
+    else
+      render :json => { :message => "刪除失敗", :errors => @checkininfo.errors }, :status => 400
+    end
+  end
+
   protected
   def checkininfo_params
     params.permit(:lng, :lat, :comment, :location, :location_photo)
