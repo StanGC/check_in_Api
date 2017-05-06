@@ -11,8 +11,7 @@ RSpec.describe Device, type: :model do
                            :name => "guest",
                            :created_at => Time.now,
                            :updated_at => Time.now,
-                           :avatar => "/uploads/user/avatar/2/image.png",
-                           )
+                           :avatar => "/uploads/user/avatar/2/image.png")
       expect( device ).to_not be_valid
     end
   end
