@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>追蹤</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <% user.name %>
+        </td>
+        <td>
+          <%= render 'follow_form' if user_signed_in? %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
