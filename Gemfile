@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem "simple_form"
 gem 'pg'
 gem 'gmaps4rails'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'byebug', platform: :mri

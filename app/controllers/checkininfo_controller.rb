@@ -1,8 +1,6 @@
 class CheckininfoController < ApplicationController
   def index
-    @users = User.all
-    @devices = Device.all
-    @checkininfos = Checkininfo.all
+    @checkininfos = Checkininfo.paginate(:page => params[:page], :per_page => 10)
 
     @hash = Gmaps4rails.build_markers(@checkininfos) do |checkininfo, marker|
       marker.lat checkininfo.lat
