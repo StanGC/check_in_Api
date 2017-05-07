@@ -26,6 +26,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "simple_form"
 gem 'pg'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
