@@ -1,5 +1,4 @@
 class Api::V1::CheckininfosController < ApiController
-
   def show
     @checkininfo = Checkininfo.find_by(token: params["token"])
 
@@ -15,12 +14,7 @@ class Api::V1::CheckininfosController < ApiController
   end
 
   def create
-    @device = Device.find_by(token: params["authentication_token"] )
-
-    @device ? @device : (render :json => { :message => "驗證失敗" })
-
-    if @device
-      @checkininfo = Checkininfo.new( :device_id => @device.id,
+    @checkininfo = Checkininfo.build( :device_id => @device.id,
                                       :token => @device.token,
                                       :lng => params[:lng],
                                       :lat => params[:lat],
@@ -28,18 +22,17 @@ class Api::V1::CheckininfosController < ApiController
                                       :location => params[:location],
                                       :location_photo => params[:location_photo] )
 
-      if @checkininfo.save
-        render :json => { :message => "新增成功", :errors => @checkininfo.errors , :status => 200,
-                          :device_id => @checkininfo.device_id,
-                          :token => @checkininfo.token,
-                          :lng => @checkininfo.lng,
-                          :lat => @checkininfo.lat,
-                          :comment => @checkininfo.comment,
-                          :location => @checkininfo.location,
-                          :location_photo => @checkininfo.location_photo}
-      else
-        render :json => { :message => "新增失敗", :errors => @checkininfo.errors }, :status => 400
-      end
+    if @checkininfo.save
+      render :json => { :message => "新增成功"
+                        :device_id => @checkininfo.device_id,
+                        :token => @checkininfo.token,
+                        :lng => @checkininfo.lng,
+                        :lat => @checkininfo.lat,
+                        :comment => @checkininfo.comment,
+                        :location => @checkininfo.location,
+                        :location_photo => @checkininfo.location_photo}
+    else
+      render :json => { :message => "新增失敗", :errors => @checkininfo.errors }
     end
   end
 
@@ -49,18 +42,18 @@ class Api::V1::CheckininfosController < ApiController
     if @checkininfo.update(checkininfo_params)
       render :json => { :message => "更新成功" }
     else
-      render :json => { :message => "更新失敗", :errors => @checkininfo.errors }, :status => 400
+      render :json => { :message => "更新失敗", :errors => @checkininfo.errors }
     end
   end
 
   def destroy
     @checkininfo = Checkininfo.find_by(token: params["token"])
-    @checkininfo.delete
+    @checkininfo.destroy
 
-    if @checkininfo.delete
+    if @checkininfo.destroy
       render :json => { :message => "刪除成功" }
     else
-      render :json => { :message => "刪除失敗", :errors => @checkininfo.errors }, :status => 400
+      render :json => { :message => "刪除失敗", :errors => @checkininfo.errors }
     end
   end
 
