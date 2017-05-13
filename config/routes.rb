@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => { :format => :json } do
     namespace :v1 do
+      post "/signup" => "auth#signup"
+      post "/login" => "auth#login"
+      post "/logout" => "auth#logout"
+
       post "/devices" => "devices#create", :as => :create_devices
 
       get "/checkininfos/:token" => "checkininfos#show", :as => :checkininfos
