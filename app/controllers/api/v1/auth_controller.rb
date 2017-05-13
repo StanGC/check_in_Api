@@ -1,5 +1,4 @@
 class Api::V1::AuthController < ApiController
-
   before_action :authenticate_user!, :only => [:logout]
 
   def signup

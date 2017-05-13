@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       post "/login" => "auth#login"
       post "/logout" => "auth#logout"
 
+      get "/me" => "users#show", :as => :user
+      patch "/me" => "users#update", :as => :update_user
+
       post "/devices" => "devices#create", :as => :create_devices
 
       get "/checkininfos/:token" => "checkininfos#show", :as => :checkininfos
